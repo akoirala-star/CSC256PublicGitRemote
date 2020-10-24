@@ -1,10 +1,8 @@
 import pytest
 import requests
 
-url = 'https://api.duckduckgo.com/?q=presidents%20of%20the%20united%20states&format=json&pretty=1%22'
-response = requests.get(url).json()
-# parse the response and put it into responseList
-# fill this list with president names taken from the response
+
+
 list_of_names_from_response = [response]
 # this should have all the valid presidents (45)
 actual_list_of_president_names = [
@@ -54,12 +52,12 @@ actual_list_of_president_names = [
 "Barack Obama"
 "Donald J. Trump"
 ]
-# loop through the presidents and append them to the actual list to have data to test
+
 test_data = []
 for president in actual_list_of_president_names:
 test_data.append((president, True))
 
-# test that the president is in the list of names from the response
+# test that the president is in the list of names 
 @pytest.mark.parametrize("president, expected", test_data)
 def testEachPresidentInList(president, expected):
 assert (president in list_of_names_from_response, expected)
